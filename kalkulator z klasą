@@ -1,0 +1,208 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+class kalkulator {
+    double mem;
+    bool mem_used = false;
+    void get_memory() {
+        if (mem_used) cout << "pamiec: " << mem << endl;
+        else cout << "pamiec pusta" << endl;
+    }
+public:
+    double add(double a, double b) {
+        double suma = a + b;
+        return suma;
+    };
+    double sub(double a, double b) {
+        double roznica = a - b;
+        return roznica;
+    };
+    double tim(double a, double b) {
+        double iloczyn = a * b;
+        return iloczyn;
+    };
+    double div(double a, double b) {
+        double iloraz = a / b;
+        return iloraz;
+    };
+    double mod(double a, double b) {
+        return a - (int)(a / b) * b;
+    };
+
+
+    void menu() {
+        double a, b;
+        int n;
+        while (true) {
+            cout << "1.dodawnie" << endl << "2.odejmowanie" << endl << "3.mnozenie" << endl << "4.dzielenie" << endl << "5.reszta z dzielenia" << endl << "6.pokaz pamiec" << endl <<
+                "7.czysc pamiec" << endl << "8.wyjscie" << endl<<"9.konwersja"<<endl;
+            cin >> n;
+            switch (n)
+            {
+            case(1):
+                cout << "podaj liczby" << endl;
+                if (mem_used) {
+                    cout << "pamiec: " << mem << endl;
+                    cin >> b;
+                    cout << add(mem, b) << endl;
+                    mem = add(mem, b);
+                    mem_used = true;
+                }
+                else {
+                    cin >> a;
+                    cin >> b;
+                    cout << add(a, b) << endl;
+                    mem = add(a, b);
+                    mem_used = true;
+                }
+                break;
+            case (2):
+                cout << "podaj liczby" << endl;
+
+                if (mem_used) {
+                    cout << "pamiec: " << mem << endl;
+                    cin >> b;;
+                    cout << sub(mem, b) << endl;
+                    mem = sub(mem, b);
+                    mem_used = true;
+                }
+                else {
+                    cin >> a;
+                    cin >> b;
+                    cout << sub(a, b) << endl;
+                }
+                break;
+            case (3):
+                cout << "podaj liczby" << endl;
+
+                if (mem_used) {
+                    cout << "pamiec: " << mem << endl;
+                    cin >> b;
+                    cout << tim(mem, b) << endl;
+                    mem = tim(mem, b);
+                    mem_used = true;
+                }
+                else {
+                    cin >> a;
+                    cin >> b;
+                    cout << tim(a, b) << endl;
+                }
+                break;
+            case (4):
+                cout << "podaj liczby" << endl;
+                if (mem_used) {
+                    cout << "pamiec: " << mem << endl;
+                    cin >> b;
+                    while (b == 0) {
+                        cout << "nie mozna dzielic przez 0" << endl;
+                        cin >> b;
+                    }
+                    cout << div(mem, b) << endl;
+                    mem = div(mem, b);
+                    mem_used = true;
+                }
+                else {
+                    cin >> a;
+                    cin >> b;
+                    while (b == 0) {
+                        cout << "nie mozna dzielic przez 0" << endl;
+                        cin >> b;
+                    }
+
+                    cout << div(a, b) << endl;
+                }
+                break;
+            case (5):
+                cout << "podaj liczby" << endl;
+                if (mem_used) {
+                    cout << "pamiec: " << mem << endl;
+                    cin >> b;
+                    while (b == 0) {
+                        cout << "nie mozna dzielic przez 0" << endl;
+                        cin >> b;
+                    }
+                    cout << mod(mem, b) << endl;
+                    mem = mod(mem, b);
+                    mem_used = true;
+                }
+                else {
+                    cin >> a;
+                    cin >> b;
+                    while (b == 0) {
+                        cout << "nie mozna dzielic przez 0" << endl;
+                        cin >> b;
+                    }
+                    cout << mod(a, b) << endl;
+                }
+                break;
+            case(6):
+                get_memory();
+                break;
+            case(7):
+                mem_used = false;
+                break;
+            case (8):
+                return;
+            case (9):
+                int n;
+                int m;
+                while (true) {
+                    std::cout << "Powrot do menu wpisz 1" << std::endl;
+                    std::cout << "Na jaki system chcesz przekonwertowac swoja liczbe" << std::endl;
+                    std::cin >> n;
+                    if (n == 1) {
+                       break;
+                    }
+
+                    if (n < 2 or n>10) {
+                        std::cout << "baza musi byc w zakresie 2-10" << std::endl;
+                        continue;;
+                    }
+
+
+                    std::cout << "Podaj swoja liczbe" << std::endl;
+                    std::cin >> m;
+
+                    std::vector<int> wynik;
+
+                    while (m > 0) {
+                        wynik.push_back(m % n);
+                        m = m / n;
+
+                    }
+
+                    std::cout << "Wynik:";
+                    for (int i = wynik.size() - 1; i >= 0; i--) {
+                        std::cout << wynik[i];
+                    }
+                    std::cout << std::endl;
+
+
+                }
+
+
+            default:
+                cout << "nie ma takiej opcji" << endl;
+                break;
+
+            }
+
+
+        }
+    }
+};
+int main()
+{
+    //double a, b;
+    //cin >> a >> b;
+    kalkulator Kalkulator;
+    Kalkulator.menu();
+
+    //add(a,b);
+    //sub(a, b);
+    //tim(a, b);
+    //div(a, b);
+    //mod(a, b);
+
+}
