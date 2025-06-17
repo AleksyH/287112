@@ -1,0 +1,7 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+<qresource prefix="/">
+    <file>images/do_projektu.png</file>
+    <file>images/ruletka_projekt.png</file>
+</qresource>
+</RCC>
